@@ -1,0 +1,42 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* שינוי הסידור לצד ימין */
+    padding: 10px 50px;
+    position: fixed;
+    top: 0;
+    right: 0; /* ממקם את הנאב בר בצד ימין */
+    width: 100%; /* מאפשר לרוחב להיות אוטומטי בהתאם לתוכן */
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav .link, .nav > div {
+    margin-left: 20px; /* מוסיף ריווח בין האלמנטים */
+    color: 'black';
+    text-decoration: none;
+}
+
+.nav .link:hover, .nav > div:hover {
+    background-color: #eee;
+}
+
+/* עיצוב האייקון של המשתמש המחובר */
+.Avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px; /* גודל האייקון */
+    height: 35px;
+    border-radius: 50%; /* הופך את האייקון לעגול */
+    background-color: #f0f0f0; /* צבע רקע לאייקון */
+    margin-left: 20px; /* ריווח מהאלמנט הקודם */
+}
+
+/* הגדלת האייקון עצמו בתוך הקונטיינר */
+.nav .user-icon > svg {
+    width: 30px; /* גודל הSVG */
+    height: 30px;
+    color: black; /* צבע האייקון */
+}

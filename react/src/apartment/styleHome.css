@@ -1,0 +1,82 @@
+
+.nav {
+    text-align: center;
+    background-color: black;
+    height: 3rem;
+    width: 100vw;
+    font-size: large;
+    padding: 1rem 0;
+    justify-content: center;
+}
+
+.link {
+    color: white;
+    margin: 2rem;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: rgb(27, 25, 25);
+}
+
+/* class יצירת 
+הפעיל link שריאקט תזהה אותו ותפעיל אותו עבור ה  */
+.active {
+    color: rgb(81, 231, 40)
+}
+
+
+.boxSearch{
+    width: 50%;
+}
+.button{
+    height: 55px;
+}
+.x1{
+    border: black solid 1px;
+    margin-bottom: 2%;
+    width: 50%;
+    margin-left: 25%;
+}
+#homePage1{
+    width: 1000px;
+}
+.icon{
+    width: 5%;
+    height:55px;
+    /* cursor: pointer; */
+
+}
+#select{
+    width: 5%;
+    height: 25px;
+    /* height: 12px; */
+}
+#select:focus{
+    height: 12px;
+}
+.li1{
+    text-align: center;
+    background-color: white;
+    border: 0;
+    font-size:larger;
+    font-family: 'Times New Roman', Times, serif;
+}
+.p{
+    border: 1px solid black;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    border-color: rgb(64, 70, 70);
+    /* border: 7px; */
+    margin-left: 300px;
+    margin-right: 300px;
+    text-align: center;
+
+
+}
+#all{
+    margin-left: 250px;
+    margin-right: 250px;
+    border: 1px solid black;
+    padding: 40px;
+}
