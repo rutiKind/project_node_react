@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {  CardActions} from '@mui/material';
+import { CardActions} from '@mui/material';
 import { Box, Button, Drawer, Typography, Slider, TextField, FormGroup, FormControlLabel, Checkbox, Card, CardMedia, CardContent, Grid } from '@mui/material';
-import { getAllCategory, getAllCity, allApartment ,getByPricreLittle,getByBigBed,byCategoryId,byCityId,booking} from './api';
+import { getAllCategory, getAllCity, allApartment ,getByPricreLittle,getByBigBed,byCategoryId,byCityId,booking,getTemp} from './api';
 import './homeStyle.css'
 import Swal from 'sweetalert2'
 import { useSelector } from 'react-redux';
@@ -19,6 +19,8 @@ export const AllApartment = () => {
   const [beds, setBeds] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedCitie, setSelectedCitie] = useState('');
+  const [temp, setTemp] = useState();
+  
 
 
 //כל הפרטים
@@ -103,14 +105,11 @@ export const AllApartment = () => {
         console.log(err);
     })
   };
-  debugger
   const USER = useSelector(state =>state.userReducer.currentClient);
    
   //בדיקה האם הלקוח מחובר כדי שיוכל להזמין
   const IsUserLoggedIn = () => {
-    debugger
-    //console.log("🚀 ~ IsUserLoggedIn ~ USER:", USER)  
-    console.log(localStorage.getItem('currentUser'));
+  //  console.log(localStorage.getItem('currentUser'));
     return USER.password !== '';
   };
 
@@ -124,21 +123,39 @@ export const AllApartment = () => {
 
   const send=(id)=>{
     debugger
-    booking(id)
+    booking(id,USER)
       Swal.fire({
         title: "The order has been registered!",
         text: "The details of the apartment were sent to the email",
         icon: "success"
       });
   }
+
+//  const getTem =(id)=>{
+//   debugger
+//   console.log(id);
+//  getTemp(id)
+//   .then(result => {
+//     setTemp(result)
+//     console.log(temp);
+//     return  12
+//     // פרטי הדירה שמוחזרים מה־Promise
+//   })
+//   .catch(x=>{
+//     return "fghjkl";
+//   }
+    // )
+  //setTemp=tt.data
+    //console.log(temp);
+  // }
   return (
     <Box sx={{ flexGrow: 1 ,backgroundColor:'#f9f9f9'}}>
           <div className='div'></div>
           
           <Typography variant="h3" component="h1" sx={{ textAlign: 'left',fontFamily: "Arial",
   fontWeight: "bold",
-  fontSize: "34px", color: '#1976d2', m: 5 }}>
-    Our apartments and suites 
+  fontSize: "34px", color: '#1976d2', m: 5 ,marginTop:'70px'}}>
+All apartments
   </Typography>
       <Drawer
         variant="permanent"
@@ -195,10 +212,10 @@ export const AllApartment = () => {
           </FormGroup>
         </Box>
       </Drawer>
-      <Grid container spacing={4} sx={{ padding: '20px', width:'85%' }}>
+      <Grid container spacing={3} sx={{ padding: '20px', width:'85%' }}>
   {apartments.map((apartment) => (
-    <Grid item xs={12} sm={6} md={4} key={apartment._id}>
-      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Grid item xs={12} sm={6} md={3.7} key={apartment._id} style={{marginLeft:12}}>
+      <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', }}>
         <CardMedia
           component="img"
           height="140"
@@ -228,6 +245,13 @@ export const AllApartment = () => {
               להזמנה
             </Button>
           )}
+          {/* <p>
+  Temperature: {getTem(apartment._id)}°C
+  </p>
+   <Typography variant="body2" color="text.secondary">
+    Description: {apartment.weatherData ? apartment.weatherData.weather[0].description : 'N/A'}
+</Typography> */}
+{/* <p>{getTem('65ca4863c8ff6d6b0e199a87')}fghjkjhgf</p> */}
         </CardActions>
       </Card>
     </Grid>

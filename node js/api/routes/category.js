@@ -7,7 +7,7 @@ const {
     getAll,
 } = require('../controllers/category')
 const { checkAuth } = require('../middlewares')
-router.post('/create', create)
+router.post('/create/:categoryName', create)
 router.get('/getAll', getAll)
 
 module.exports = router

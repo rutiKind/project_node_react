@@ -15,9 +15,12 @@ module.exports = {
            const response = await axios.get(`http://api.openweathermap.org/data/2.5/find?q=${encodeURIComponent(cityName)}&appid=${apiKey}`);
            const cityData = response.data;
             console.log(cityData);
+            console.log(cityData.list[0].main);
           if (cityData.count > 0) {
+            const cityTemp=cityData.list[0].main
             const cityCode = cityData.list[0].id;
-            return cityCode;
+            console.log(cityCode);
+            res.status(200).send(cityTemp)
           } else {
             console.log('City not found.');
             return null;
@@ -44,9 +47,11 @@ getAllCity: (req, res) => {
 createCity: (req, res) => {
     const {
         cityName,
-    } = req.body
+    } = req.params
+    console.log(req.params);
     const Apartment=[]
     const city = new City({  cityName ,Apartment})
+    console.log(city);
     city.save()
         .then((city) => {
             res.status(200).send(`Create city ${city._id} succeed`);

@@ -25,12 +25,9 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-// import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-//import React from 'react'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-//import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
@@ -187,7 +184,7 @@ useEffect(() => {
       </React.Fragment>
     </div>
     <div className='div'></div>
-    <div style={{ backgroundColor: '#f9f9f9' }}>
+    <div style={{ backgroundColor: 'white' }}>
       <div style={{ marginRight: '5%', float: 'right', marginTop: '3%', backgroundColor: '#f9f9f9' }}>
         <h1 style={{ borderBottomColor: 'greenyellow' }}>אודות  <span className="underline"></span>האתר</h1>
         <br></br>
@@ -208,87 +205,10 @@ useEffect(() => {
         <img src='../../images/honeSmall.jpg' width={'40%'}></img>
       </div>
     </div>
-    <div className='div'></div>
+    <div style={{height:'20px',backgroundColor:'#f9f9f9' }}></div>
+ 
 
-    <div style={{ marginLeft: '8%', marginRight: '5%', width: '80%', height: '550px', marginBottom: '3%' }}>
-      <h1 style={{ borderBottomColor: 'greenyellow', marginBottom: '3%' }}>מה <span className="underline"></span>מסביב </h1>
-      <br></br>
-      <Card sx={{ width: '23%', float: 'right', marginRight: '8%', marginLeft: '5%', borderBottomColor: 'rgb(146, 244, 198)' }}>
-        <CardContent>
-          <Typography  color="text.secondary" >
-            <div className="circle">
-              <img src="../../images/honeSmall.jpg" alt="Your Image" style={{ width: '200px%', height: '200px' }}></img>
-            </div>
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            <h3>נקודות עניין</h3>
-          </Typography>
-          <Typography variant="body2">
-            <p>
-              'נקודות עניין' מהווה מלווה מושלם לכל
-              חובב טיולים שרוצה להפוך כל יום יציאה
-              להרפתקה אישית. שירותינו מאפשר
-              למשתמשים למצוא בקלות אתרים קרובים
-              למקום הנוכחי או נקודות עניין ביעדים
-              מתוכננים, עם ידע עשיר ועדכני שמעמיק
-              את החוויה בכל ביקור.
-            </p>
-          </Typography>
-          <span className="underline"></span>
-        </CardContent>
-
-      </Card>
-      <Card sx={{ width: '23%', float: 'right', marginLeft: '5%', borderBottomColor: 'rgb(146, 244, 198)' }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            <div className="circle">
-              <img src="../../images/honeSmall.jpg" alt="Your Image" style={{ width: '100%', height: '200px' }}></img>
-            </div>
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            <h2>אטרקציות</h2>
-          </Typography>
-          <Typography variant="body2">
-            <p>'אטרקציות בסביבה' מחברת אותך עם
-              ההתרגשות שנמצאת ממש מעבר לפינה!
-              מפעילויות מרתקות ועד מקומות מרגיעים
-              , הפלטפורמה המקיפה שלנו היא הבחירה
-              שלך לתכנון יום בילוי מושלם. לא עוד חיפוש
-              אינסופי - אנחנו מביאים את האטרקציות
-              היישר אליכם.</p>
-          </Typography>
-          <span className="underline"></span>
-        </CardContent>
-      </Card>
-      <Card sx={{ width: '23%', float: 'right', marginLeft: '5%', borderBottomColor: 'rgb(146, 244, 198)' }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            <div className="circle">
-              <img src="../../images/honeSmall.jpg" alt="Your Image" style={{ width: '100%', height: '200px' }}></img>
-            </div>
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            <h3>צימרים</h3>
-          </Typography>
-          <Typography variant="body2">
-            <p>
-              צימרים מציע מפלט שליו מההמולה של חיי
-              היומיום, ומספק חדרי אירוח נעימים ופרטיים
-              השוכנים בכמה מהמקומות הציוריים ביותר.
-              כל חלל מעוצב באופן ייחודי מבטיח שילוב
-              של נוחות וטבע, מושלם לחופשה מרגשת או
-              מפלט שליו
-              ורגוע.
-            </p>
-          </Typography>
-          <span className="underline"></span>
-        </CardContent>
-      </Card>
-    </div>
-    <div className='div'></div>
-    <div className='div'></div>
-
-    <div className='navBottom' style={{ marginBottom: '-3%',backgroundColor:'#f9f9f9'  }} >
+    <div className='navBottom' style={{ marginBottom: '-3%',backgroundColor:'white' ,marginTop:'3%' }} >
 
       <h1 style={{ borderBottomColor: 'greenyellow' }}>ליצירת<span className="underline" id='contect'></span> קשר</h1>
 
@@ -339,8 +259,8 @@ useEffect(() => {
         <button type="submit" className="button" style={{ width: '82%', backgroundColor: 'black', borderColor: 'black', borderRadius: '3%' ,color:'white'}}>צור קשר</button>
       </div>
     </div>
-    <div className='div'></div>
-    <div className='div'></div>
+    <div className='div' style={{backgroundColor:'white'}}></div>
+    {/* <div className='div'></div> */}
 
 {/* maps */}
 <LoadScript
@@ -351,7 +271,6 @@ useEffect(() => {
           center={center}
           zoom={10}
         >
-          {/* כאן ניתן להוסיף ילדים נוספים ל-GoogleMap אם רוצים, כמו מרקרים, אזורים וכו' */}
         </GoogleMap>
       </LoadScript>
 
@@ -359,18 +278,19 @@ useEffect(() => {
     
     <Box sx={{ p: 4, backgroundColor: '#f5f5f5', textAlign: 'center' }}>
       <Typography variant="h5" sx={{ mb: 2 }}>
-      Contact      </Typography>
+      We will be happy to keep in touch      </Typography>
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2, mb: 2 }}>
-        <PhoneIcon />
         <Typography variant="body1">0583209640</Typography>
+        <PhoneIcon />
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2, mb: 2 }}>
-        <EmailIcon />
         <Typography variant="body1">r583209640@gmail.com</Typography>
+        <EmailIcon />
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2 }}>
+        <Typography variant="body1"> 6 Hadishon St. Givat Ze'ev  </Typography>
         <LocationOnIcon />
-        <Typography variant="body1">רחוב הדישון, 6 </Typography>
+
       </Box>
     </Box>
   </>

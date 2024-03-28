@@ -19,7 +19,7 @@ import PinDropIcon from '@mui/icons-material/PinDrop';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-
+import { TbMessageCircleQuestion } from "react-icons/tb";
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -31,7 +31,7 @@ import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import React from 'react'
-
+import { FaUserCircle,FaChevronDown ,FaTemperatureHigh } from 'react-icons/fa';
 import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Grow from '@mui/material/Grow';
@@ -41,6 +41,9 @@ import Popper from '@mui/material/Popper';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import  { useRef } from 'react';
+import { getTemp } from './api';
+//import { FaUserCircle, FaTemperatureHigh } from 'react-icons/fa'; // ייבוא האייקונים מהספרייה המתאימה
+//import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 
@@ -60,9 +63,8 @@ export const Nav = () => {
 
 //
 
-
+    const [temp, setTemp] =useState()
     const [value, setValue] = useState('recents');
-    debugger
     const cu = useSelector(x => x.userReducer.currentUser)
     const [c, setC] = useState(cu)
 
@@ -94,7 +96,31 @@ export const Nav = () => {
 
     const prevOpen = React.useRef(open);
 
+    // const getTem =()=>{
+    //     debugger
+    //     const id='65ca4863c8ff6d6b0e199a87'
+    //    getTemp(id)
+    //     .then(result => {
+    //       setTemp(result)
+    //       console.log(temp);
+    //       return  12
+    //     })
+    //     .catch(x=>{
+    //       return "fghjkl";
+    //     }
+    //       )
+    //     //setTemp=tt.data
+    //       //console.log(temp);
+    //     }
+
     return <>
+            {/* <div>
+            <Tooltip title={`Temperature: ${getTem()} °C`}>
+              <IconButton>
+                <FaTemperatureHigh size={30} color="black" />
+              </IconButton>
+            </Tooltip>
+          </div> */}
         <div className={'nav'}>
             {
                 cu && cu.email != '' &&
@@ -110,7 +136,7 @@ export const Nav = () => {
                                     aria-haspopup="true"
                                     aria-expanded={open ? 'true' : undefined}
                                 >
-              <Avatar sx={{ fontSize: 'meduim', width: 45, height: 45, color: 'white', backgroundColor: 'black' }}>{<AccountCircleIcon fontSize='large' style={{ width: 65, height: 65 }}></AccountCircleIcon>}</Avatar>
+              <FaUserCircle size={40} color="black" backgroundColor="black" marginLeft="55%" sx={{ marginLeft:'px',fontSize: '450px', width: 42, height: 42, color: 'white', backgroundColor: 'black' }}>{<AccountCircleIcon fontSize='large' style={{ width: 75, height: 65 }}></AccountCircleIcon>}</FaUserCircle >
                                 </IconButton>
                             </Tooltip>
                         </Box>
@@ -149,8 +175,9 @@ export const Nav = () => {
                             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                         >
+
                             <MenuItem onClick={add}>
-                                <Avatar /> addApartment
+                                <Avatar  /> addApartment
                             </MenuItem>
                             <Divider />
                             <MenuItem onClick={myApartment}>
@@ -167,18 +194,17 @@ export const Nav = () => {
                             </MenuItem>
                         </Menu>
                     </React.Fragment>
+          
                 </div>
             }
-
-            <a href='http://localhost:3000/Home#map' className={'link'}>{<PinDropIcon></PinDropIcon>}</a>
-            <a  href='http://localhost:3000/Home#contect' className={'link'}>{<PhoneIcon></PhoneIcon>}</a>
-            <NavLink to='Home' className={'link'}>{<MailIcon></MailIcon>}</NavLink>
-            <NavLink to='Home' className={'link'}>{<ShareIcon></ShareIcon>}</NavLink>
-
+           
+            {/* <a href='http://localhost:3000/Home#map' className={'link'}>{<PinDropIcon></PinDropIcon>}</a> */}
+            {/* <a  href='http://localhost:3000/Home#contect' className={'link'}>{<PhoneIcon></PhoneIcon>}</a> */}
+            {/* <a href='http://localhost:3000/Home#contect'>{<MailIcon></MailIcon>}</a> */}
+            {/* <a href='http://localhost:3000/Home#contect'>{<ShareIcon></ShareIcon>}</a> */}
+            <NavLink to='CommonQuestions' className={'ICON'}>{<TbMessageCircleQuestion/>}</NavLink>
             <NavLink to='Home' className={'link'}>Home</NavLink>
             <NavLink to='AllApartment' className={'link'}>AllApartments</NavLink>
-            <NavLink to='resertPassword' className={'link'}>resertPassword</NavLink>
-
         </div>
     </>
 }

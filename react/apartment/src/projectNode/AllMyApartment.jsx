@@ -126,7 +126,6 @@ export const AllMyApartment=()=>{
                 {/* פרטי הדירה */}
               </CardContent>
               <Button onClick={() => update(apartment)}>Update</Button>
-              {/* כפתור מחיקה עם אייקון */}
               <IconButton aria-label="delete apartment" onClick={() => deleteApartment(apartment._id)}>
                 <DeleteIcon />
               </IconButton>

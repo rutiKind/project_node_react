@@ -7,8 +7,8 @@ const {
     getCityCode
 } = require('../controllers/city')
 const { checkAuth } = require('../middlewares')
-router.post('/createCity', createCity)
+router.post('/createCity/:cityName', createCity)
 router.get('/getAllCity', getAllCity)
-router.get('/getCityCode/:cityId',checkAuth, getCityCode); 
+router.get('/getCityCode/:cityId', getCityCode); 
 
 module.exports = router

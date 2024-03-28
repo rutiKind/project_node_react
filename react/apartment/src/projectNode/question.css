@@ -1,0 +1,54 @@
+.accordion-item {
+    /* margin-top: 300px; */
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .accordion-title {
+    background-color: #f1f1f1;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.6s ease;
+  }
+  
+  .accordion-title:hover {
+    background-color: #ddd;
+  }
+  
+  .accordion-icon {
+    color: #007bff; 
+
+    float: right;
+  }
+  
+  .rotate {
+    transform: rotate(180deg);
+  }
+  
+  .accordion-content {
+    border-top: 1px solid #007bff; 
+    padding: 0 15px;
+    background-color: white;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+  }
+ 
+  
+.faq-header {
+  font-size: 24px;
+  color: #007bff; 
+  text-align: center;
+  margin: 0;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-bottom: 2px solid #e7e7e7;
+}
+
+.accordion {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

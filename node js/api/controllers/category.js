@@ -4,7 +4,8 @@ module.exports = {
     create: (req, res) => {
         const {
             categoryName,
-        } = req.body
+        } = req.params
+        console.log(req.params);
        const apartment=[]
         const category = new Category({ apartment, categoryName })
         category.save()

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useSelector } from "react-redux";
 
 
 const getToken = () => localStorage.getItem('token');
@@ -60,8 +61,20 @@ export const getByBigBed=(x)=>{
 
   //עדכון סיסמא חדשה
   export const chengePassword=(email,newPassword)=>{
-    return axios.put(`http://localhost:3004/advertiser/chengePassword`,{email:email, newPassword:newPassword})
+    debugger
+    return axios.put(`http://localhost:3004/advertiser/changePassword`,{email:email, newPassword:newPassword})
   }
+
+  //שכחתי סיסמא לקוח
+  export const forgetPassword2=(email)=>{
+    debugger
+    return axios.post(`http://localhost:3004/customer/forgetPassword/`, { email: email });
+    }
+  
+    // עדכון סיסמא חדשה לקוח
+    export const chengePassword2=(email,newPassword)=>{
+     return axios.put(`http://localhost:3004/customer/changePassword`,{email:email, newPassword:newPassword})
+    }
 
   //שליפת כל הדירות לפי קוד קטגוריה
   export const byCategoryId=(id)=>{
@@ -85,10 +98,10 @@ export const getByBigBed=(x)=>{
   }
 
   //הזמנת דירה
-  export const booking = (id) => {
+  export const booking = (id,user) => {
     debugger
     const token = getToken();
-    const user = JSON.parse(localStorage.getItem('currentUser')); 
+    // const user = JSON.parse(localStorage.getItem('currentUser')); 
     const email = user.email;
     return axios.post(`http://localhost:3004/apartment/apartmentDetails`, { apartment: id, email: email }, {
       headers: {
@@ -140,24 +153,26 @@ export const getByBigBed=(x)=>{
       //הוספת דירה
       export const addApartment = (formData) => {
         debugger
-        return axios.put(`http://localhost:3004/apartment/update`, formData, {
-                  headers: {
-                      'Content-Type': 'multipart/form-data' 
-                  }
-              });  
+        return axios.post(`http://localhost:3004/apartment/create`, formData);  
              }
 
       //הוספת עיר
        export const addCit=(cityName)=>{
          debugger
-         return axios.post(`http://localhost:3004/city/createCity/`, cityName);
+         return axios.post(`http://localhost:3004/city/createCity/${cityName}`);
           }
 
        //הוספת קטגוריה
           export const addCategor=(categoryName)=>{
             debugger
-          return axios.post(`http://localhost:3004/categories/create/`, categoryName);
+           return axios.post(`http://localhost:3004/categories/create/${categoryName}`);
              }
+
+      //מזג אויר לדירה
+      export const getTemp=(id)=>{
+        debugger
+       return axios.get(`http://localhost:3004/city/getCityCode/${id}`);
+         }
 
 
 

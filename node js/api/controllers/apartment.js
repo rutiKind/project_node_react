@@ -23,7 +23,9 @@ module.exports = {
  
 //יצירת דירה חדשה
 create: async  (req, res) => {
+
     const { path: image } = req.file
+    console.log(req.file);
     //'path'.replace('//','/')
     const { advertiserId, price, addition, numBed, address, cityId, categoryId, description, apartmentName } = req.body;
     const apartment = new Apartment({ advertiserId, price, addition, numBed, address, cityId,pic: image.replace('\\', '/'), categoryId, description, apartmentName });
@@ -107,7 +109,7 @@ getByCategoryId: (req, res) => {
     Category.findById(categoryId)
         .then((category) => {
             if (!category) {
-                return res.status(404).send({ message: `Category not found!` })
+             return res.status(404).send({ message: `Category not found!` })
             }
 
             //where 
@@ -273,6 +275,7 @@ getByAdvertiser: (req, res) => {
 //שליחת מייל עם פרטי הדירה
 apartmentDetails:(req,res)=>{
     const {apartment,email}=req.body
+    console.log(email);
     console.log("🚀 ~ apartment:", apartment)
     Apartment.find({ _id: { $eq: apartment } }).populate({path:'cityId categoryId advertiserId' , select:'cityName Apartment email categoryName'})
 

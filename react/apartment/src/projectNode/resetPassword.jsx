@@ -3,10 +3,13 @@ import { TextField, Button, Card, CardContent, IconButton, InputAdornment, Typog
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useParams } from 'react-router-dom';
-import { chengePassword } from './api';
+import { chengePassword,chengePassword2 } from './api';
 
 
 export const ResertPassword=()=>{
+
+  const [userType, setUserType] = useState('');
+
     debugger
     let p=useParams()
     const email=p.email
@@ -30,7 +33,21 @@ export const ResertPassword=()=>{
         debugger
       event.preventDefault();
       console.log(password);
-      chengePassword(email,password)      
+      if(userType==='advertiser'){
+        chengePassword(email,password).then(x=>{
+      alert("success")
+      })
+      .catch(x=>
+        alert("error")
+        )
+      }
+      else
+       chengePassword2(email,password). then(x=>
+        alert("success")
+      )  
+      .catch(x=>
+        alert("error")
+        )
     };
 
     return<>
@@ -63,9 +80,28 @@ export const ResertPassword=()=>{
                 ),
               }}
             />
+            <label>
+          <input 
+            type="radio"
+            value="advertiser"
+            checked={userType === 'advertiser'}
+            onChange={(e) => setUserType(e.target.value)}
+          />
+          Advertiser
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="client"
+            checked={userType === 'client'}
+            onChange={(e) => setUserType(e.target.value)}
+          />
+          Client
+        </label>
             <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: '20px' }}>
               שנה סיסמה
             </Button>
+
           </form>
         </CardContent>
       </Card>

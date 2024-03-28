@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import Swal from 'sweetalert2'
-import { forgetPassword,loginClient } from "./api";
+import { forgetPassword,loginClient, forgetPassword2 } from "./api";
 
 // import './styleTry9.css'
 
@@ -65,7 +65,7 @@ export const Login = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "advertiser does not exist",
+                    text: x.data,
                     footer: '<a href="/register"> to register</a></a>'
                   });
                 debugger
@@ -75,7 +75,7 @@ export const Login = () => {
                 localStorage.setItem('currentUser',JSON.stringify(x.data.advertiser[0]))
                 console.log(x.data)
                     dispatch(setCurrentUser(x.data.advertiser[0]))
-                    dispatch(setCurrentClient())
+                   // dispatch(setCurrentClient())
                     //הצלחה
                     Swal.fire({
                         icon: "success",
@@ -86,10 +86,11 @@ export const Login = () => {
                     nav(`/Home/`)
             })
             .catch(err => {
+              console.log(err);
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "advertiser does not exist",
+                    text: err.response.data.error,
                     footer: '<a href="/register"> to register</a></a>'
                   });
                 console.log(err);
@@ -104,7 +105,7 @@ export const Login = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Client does not exist",
+                    text: x.response.data.error,
                     footer: '<a href="/register"> to register</a></a>'
                   });
                  //שמירת לקוח
@@ -115,8 +116,9 @@ export const Login = () => {
                 localStorage.setItem('currentClient',JSON.stringify(x.data.customer2))
                 console.log(x.data.customer2);
                 dispatch(setCurrentClient(x.data.customer2))
-                dispatch(setCurrentAdvertiser(''))
-                console.log(currentClient);
+                //dispatch(setCurrentAdvertiser(''))
+                //console.log(currentClient);
+                nav('/Home/')
                 //הצלחה
                 Swal.fire({
                     icon: "success",
@@ -124,19 +126,18 @@ export const Login = () => {
                     text: `Hi ${x.data.customer2.email} welcome back`,
                     confirmButtonColor: '#3085d6',
                   });
-                nav('/Home/')
             }
 )
 .catch(x=>{
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Client does not exist",
+        text: x.response.data.error,
+        // text: "Client does not exist",
         footer: '<a href="/register"> to register</a></a>'
       });
     })
-          }
-    
+    }
     }
     //איפוס סיסמא
     const handleForgotPassword = () => {
@@ -153,23 +154,44 @@ export const Login = () => {
             confirmButtonText: "send",
             showLoaderOnConfirm: true,
             preConfirm: async (login) => {
-              try {
-                debugger
                 //שכחתי סיסמא
-                forgetPassword(login)
+              if(userType=='advertiser'){
+                  forgetPassword(login).then(x=>
+                    Swal.fire({
+                      icon: "success",
+                      title: "The email was sent successfully!",
+                      confirmButtonColor: '#3085d6',
+                    }))
+               .catch (x=> 
+                {
+                console.log(x);
+                Swal.fire({
+                  title: "Oops",
+                  text: x.response.statusText,
+                  icon: "error"   
+                 
+              })
+            })
+            }
+            else{
+              forgetPassword2(login)
+              .then(x=>
                 Swal.fire({
                     title: "The email was sent successfully!",
-                   // text: "Your file has been deleted.",
                     icon: "success"      
-                });
-              } catch (error) {
-                Swal.showValidationMessage(`
-                  Request failed: ${error}
-                `);
-              }
-            },
+                }))
+               .catch (x=> 
+                {
+                console.log(x);
+                Swal.fire({
+                  title: "Oops",
+                  text: x.response.data.message,
+                  icon: "error"          
+              })
+            })
+            }
        
-          });
+          }})
     };
     return <>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f0f0f0' }}>
@@ -218,10 +240,10 @@ export const Login = () => {
                                             {showPassword ? <VisibilityOff /> : <Visibility />}
                                         </IconButton>
                                     </InputAdornment>
-                                ),
-                            }}
-                        />
-                         <div>
+                      ),
+              }}
+                />
+            <div>
         <label>
           <input 
             type="radio"

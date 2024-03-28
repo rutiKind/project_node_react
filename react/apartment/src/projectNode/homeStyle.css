@@ -1,47 +1,100 @@
-.underline {
-    position: relative;
-    text-decoration: none;
-    color: black;
-    
+/* question.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .accordion {
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .accordion-item {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e7e7e7;
+  }
+  
+  .accordion-title {
+    background-color: #ffffff;
+    color: #333;
+    cursor: pointer;
+    padding: 1.5rem;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accordion-title:hover {
+    background-color: #f8f8f8;
+  }
+  
+  .accordion-icon {
+    font-size: 25px;
+    transition: transform 0.3s ease;
+  }
+  
+  .rotate {
+    transform: rotate(180deg);
+  }
+  
+  .accordion-content {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7e7e7;
+    line-height: 1.8;
+  }
+  /* homeStyle.css */
+body {
+  font-family: 'Arial', sans-serif;
 }
 
-.underline::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -28px;
-    background-color:#1976d2;
-    /* rgb(146, 244, 198); */
-    height: 5px;
-    width: 100px; /* Adjust this width to fit your sentence */
-    transform: translateX(-50%);
-    /* flex:content; */
+.div {
+  clear: both;
+  padding: 50px 0; /* מוסיפים מרווחים גדולים יותר בין הקטעים */
+  background-color: #f9f9f9; /* צבע רקע בהיר לקטעים */
 }
 
-.circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%; /* This creates a circular shape */
-    overflow: hidden;
+.navBottom, .aboutSection {
+  background-color: #f0f0f0; /* צבע רקע עדין יותר לקטעים מסוימים */
+  padding: 20px 0; /* מוסיפים מרווחים לפני ואחרי הטקסט */
 }
 
+/* הוספת גוונים שונים לקטעים שונים ליצירת עניין ויזואלי */
+.contactSection {
+  background-color: #e6e6e6; /* צבע רקע קצת יותר כהה לקטע יצירת קשר */
+  padding: 40px 0;
+}
 
-/* 
-import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import React from 'react'
- */
+.button {
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
 
- .div{
-  height: 60px; /* גובה הרווח */
-  background-color:  #f9f9f9 ; /* צבע הרווח */
-  width: 100%; /* רוחב הרווח */
- }
+/* שיפור המראה הכללי של כפתורים וקלטים */
+.input, textarea, .button {
+  margin: 10px 0; /* מוסיפים מרווחים בין שדות הקלט */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  width: 80%; /* הגדלת שטח הטקסט */
+  height: 100px; /* הגדלת הגובה לטובת נוחות כתיבה */
+}
+
+  
+  

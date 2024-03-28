@@ -85,8 +85,8 @@ export const Register = () => {
                       //הצלחה
                       Swal.fire({
                           icon: "success",
-                          title: "You've logged in successfully",
-                          text: `Hi ${x.data.advertiser[0].email} welcome back`,
+                          title: "You've register  successfully",
+                          text: `Hi ${x.data.advertiser[0].email} welcome `,
                           confirmButtonColor: '#3085d6',
                         });
                       nav(`/Home/`)
@@ -96,8 +96,7 @@ export const Register = () => {
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "advertiser does not exist",
-                    footer: '<a href="/register"> to register</a></a>'
+                    text: err.response.data.message,
                   });
                 console.log(err);
 
@@ -129,10 +128,11 @@ export const Register = () => {
             })
                 })             
     .catch(x=>{
+        console.log(x);
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Client does not exist",
+        text: x.response.data.message,
       });
     })
           }

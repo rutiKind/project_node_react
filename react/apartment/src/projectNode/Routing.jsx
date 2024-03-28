@@ -10,6 +10,7 @@ import { AllMyApartment } from './AllMyApartment'
 import { ResertPassword } from './resetPassword'
 import {AllApartment} from './AllAparatment2'
 import { AddApartment } from './AddApartment'
+import { CommonQuestions} from './CommonQuestions'
 
 export const Routing = () => {
     return <>
@@ -28,6 +29,7 @@ export const Routing = () => {
             <Route path={'AddApartment'} element={<AddApartment></AddApartment>}></Route>
             <Route path={'AllMyApartment'} element={<AllMyApartment></AllMyApartment>}></Route>
             <Route path={'ResertPassword/:email'} element={<ResertPassword></ResertPassword>}></Route>
+            <Route path={'CommonQuestions'} element={<CommonQuestions></CommonQuestions>}></Route>
 
             {/* <Route path={'Try2/:word/:spe'} element={<BasicAccordion2></BasicAccordion2>}></Route> */}
             {/* :1שם_פרמטר2/:  שם_פרמטר */}

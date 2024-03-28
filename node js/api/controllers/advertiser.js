@@ -129,14 +129,13 @@ module.exports = {
   forgetPassword:(req,res)=>{
     console.log(req.body);
     const {email}=req.body
-    //email=req.params.email
     console.log(email);
     Advertiser.find({ email: { $eq: email } })
     .then(advertiserSaved => {
       const [advertiser2] = advertiserSaved
       console.log(advertiser2);
 
-      // sending an email
+      // שליחת אימייל
       let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -152,7 +151,6 @@ module.exports = {
         from: 'r583209640@gmail.com',
         to: advertiser2.email,
         subject: 'your password',
-        //text:advertiser2.password ,
         html: `Hello,<br>To reset your password, please click on the following link: <a href="http://localhost:3000/ResertPassword/${advertiser2.email}">Reset Password</a>`
       };
 
@@ -171,7 +169,9 @@ module.exports = {
 
 //עדכון סיסמא
 changePassword :(req, res) => {
-  const { email, newPassword } = req.body; // השימוש בשם משתנה חדש לסיסמא למנוע בלבול
+  console.log("enter");
+  const { email, newPassword } = req.body; 
+  console.log(req.body);
   
   Advertiser.findOne({ email: email }).then(advertiser => {
       if (!advertiser) {
